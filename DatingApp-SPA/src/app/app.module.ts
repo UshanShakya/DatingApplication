@@ -17,6 +17,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberListComponent } from './member-list/member-list.component';
+import { appRoutes } from './routes';
 
 @NgModule({
    declarations: [
@@ -35,7 +36,7 @@ import { MemberListComponent } from './member-list/member-list.component';
       FormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      RouterModule
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
