@@ -1,3 +1,10 @@
 .dropdown-toggle {
     cursor: pointer;
 }
+#imagesss {
+    max-height: 50px;
+    max-width: 50px;
+    border: 2px dashed white;
+    display: inline;
+    
+}
