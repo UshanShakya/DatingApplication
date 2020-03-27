@@ -48,7 +48,7 @@ export class PhotoEditorComponent implements OnInit {
       maxFileSize: 10 * 1024 * 1024
     });
 
-    this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false ;};
+    this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false ; };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
@@ -70,7 +70,10 @@ export class PhotoEditorComponent implements OnInit {
      this.currentMain = this.photos.filter(p => p.isMain === true)[0];
      this.currentMain.isMain = false;
      photo.isMain = true;
-     this.getMemberPhotoChange.emit(photo.url);
+    //  this.getMemberPhotoChange.emit(photo.url);
+     this.authService.changeMemberPhoto(photo.url);
+     this.authService.currentUser.photoUrl = photo.url;
+     localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     // tslint:disable-next-line: no-shadowed-variable
     }, error => {
       this.alertify.error(error);
