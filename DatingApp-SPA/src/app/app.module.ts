@@ -10,6 +10,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -67,6 +68,7 @@ export function tokenGetter() {
       BsDatepickerModule.forRoot(),
       TimeagoModule.forRoot(),
       PaginationModule.forRoot(),
+      ButtonsModule.forRoot(),
       NgxGalleryModule,
       FileUploadModule,
       RouterModule.forRoot(appRoutes),
