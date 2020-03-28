@@ -6,13 +6,13 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user?.knownAs}}">
+                <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../assets/user.png'}}" alt="{{user.knownAs}}">
                 <div class="card-body">
                     <div>
-                        <strong>Locations: </strong><p>{{user.city}}, {{user?.country}}</p>
-                        <strong>Age: </strong><p>{{user?.age}}</p>
-                        <strong>Last Active: </strong><p>{{user.lastActive}}</p>
-                        <strong>Member Since: </strong><p>{{user.created}}</p>
+                        <strong>Locations: </strong><p>{{user.city}}, {{user.country}}</p>
+                        <strong>Age: </strong><p>{{user.age}}</p>
+                        <strong>Last Active: </strong><p>{{user.lastActive | timeago}}</p>
+                        <strong>Member Since: </strong><p>{{user.created | date}}</p>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -28,17 +28,21 @@
                 <tabset class="member-tabset">
                     <tab heading="About {{user.knownAs}}">
                         <h4>Description</h4>
-                        <p>{{user?.introduction}}</p>
+                        <p>{{user.introduction || "No Introduction recorded."}}</p>
                         <h4>Looking For</h4>
-                        <p>{{user.lookingFor}}}</p>
+                        <p>{{user.lookingFor || "No Looking For recorded."}}</p>
                     </tab>
                     <tab heading="Interests">
                         <h4>Interests</h4>
-                        <p>{{user.intrests}}</p>
+                        <p>{{user.intrests || "No Interests recorded."}}</p>
                     </tab>
                     <tab heading="Photos">
+                        
                         <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-                    </tab>
+                        <div *ngIf="!galleryImages.values() == null">
+                            <p>No Photos Found. </p>
+                        </div>
+                        </tab>
                     <tab heading="Messages">
                         <h4>Messages will gos here.</h4>
                     </tab>
